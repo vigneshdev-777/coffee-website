@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Brew | Premium Coffee Experience</title>
+  <meta name="description" content="Discover Aura Brew. A premium luxury coffee brand experience crafted for every moment. Book a table at our Lavelle Road coffee sanctuary.">
+
+  <!-- Google Fonts: Cormorant Garamond (Serif Headlines) and Plus Jakarta Sans (Sans-serif Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Link: Aura Brew Style Sheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loading">
+
+  <!-- ============ PRELOADER ============ -->
+  <div id="aura-preloader">
+    <div class="preloader-brand-wrap">
+      <div class="preloader-brand" id="preloader-logo">AURA BREW</div>
+      <div class="preloader-sub" id="preloader-date">EST. 2018</div>
+      <div class="preloader-line" id="preloader-progress"></div>
+    </div>
+  </div>
+
+  <!-- ============ NAVIGATION BAR ============ -->
+  <nav class="navbar-aura" id="main-nav">
+    <a href="#hero" class="logo-aura" id="nav-logo">
+      AURA <span>BREW</span>
+    </a>
+    <div class="nav-links-aura" id="nav-links">
+      <a href="#hero" class="nav-item-aura active" id="link-hero">Home</a>
+      <a href="#about" class="nav-item-aura" id="link-about">About</a>
+      <a href="#menu" class="nav-item-aura" id="link-menu">Offerings</a>
+      <a href="#gallery" class="nav-item-aura" id="link-gallery">Gallery</a>
+      <a href="#location" class="nav-item-aura" id="link-location">Location</a>
+      <a href="#booking" class="nav-item-aura" id="link-booking">Reservations</a>
+    </div>
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <button class="nav-cart-aura" aria-label="Cart" id="cart-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+      </button>
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-btn nav-cart-aura" aria-label="Toggle Menu" id="menu-toggle-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ SECTION 1: HERO ============ -->
+  <header id="hero" class="hero-aura" style="background-image: url('images/aura-brew-hero.png');">
+    <div class="hero-overlay-flat"></div>
+    <div class="container hero-content-wrap">
+      <div class="hero-card-editorial">
+        <span class="eyebrow reveal-item">Luxury Coffee Ritual</span>
+        <h1 class="reveal-item delay-100">DISCOVER YOUR RITUAL</h1>
+        <p class="reveal-item delay-200">Premium Coffee Experience Crafted For Every Moment. Immerse yourself in the warm elegance of Aura Brew, where every bean is meticulously selected and roasted for the ultimate coffee experience.</p>
+        <div class="hero-buttons reveal-item delay-300">
+          <a href="#booking" class="btn-aura primary" id="btn-hero-reserve">Book A Table</a>
+          <a href="#menu" class="btn-aura secondary" id="btn-hero-explore">Explore Menu</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SECTION 2: ABOUT / FEATURED EXPERIENCE ============ -->
+  <section id="about" class="experience-sec">
+    <div class="container">
+      <div class="section-head reveal-item">
+        <span class="eyebrow">Craft & Craftsmanship</span>
+        <h2>MORE THAN COFFEE</h2>
+      </div>
+      <p class="about-brand-desc reveal-item reveal-left delay-100">
+        Since our inception, Aura Brew has been devoted to the pursuit of coffee perfection. We believe that coffee is more than a daily caffeine intake—it is a sensory ritual. Our beans are sourced from shade-grown organic farms, roasted to bring out complex notes, and poured by expert baristas in a warm, sophisticated interior that calms the senses.
+      </p>
+
+      <div class="experience-grid">
+        <!-- Feature 1: Artisanal Quality -->
+        <div class="experience-card reveal-item reveal-left delay-150">
+          <h3>Artisanal Quality</h3>
+          <p>Every blend is crafted from organic, direct-trade green beans, roasted with temperature-controlled precision to ensure unmatched flavor depth.</p>
+        </div>
+
+        <!-- Feature 2: Expert Craftsmanship -->
+        <div class="experience-card reveal-item reveal-scale delay-250">
+          <h3>Expert Craftsmanship</h3>
+          <p>Our baristas are certified flavor experts who treat coffee preparation as a high-art form, from microfoam thickness to pour-over timing.</p>
+        </div>
+
+        <!-- Feature 3: Warm Atmosphere -->
+        <div class="experience-card reveal-item reveal-right delay-350">
+          <h3>Warm Atmosphere</h3>
+          <p>Designed as a minimalist, luxury sanctuary, our space features warm wood, clean lines, and soft lighting to slow down your day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="menu" class="offerings-sec">
+    <div class="container">
+      <div class="section-head reveal-item">
+        <span class="eyebrow">Our Selections</span>
+        <h2>OUR OFFERINGS</h2>
+        <p>A curated breakdown of premium beverages, artisan pastries, and upscale spaces.</p>
+      </div>
+
+      <div class="offerings-grid">
+        <!-- Offering 1: Premium Coffee -->
+        <div class="offering-card reveal-item reveal-left delay-150">
+          <div class="offering-img-wrap">
+            <img src="images/hazelnut-latte.jpg" alt="Premium Hazelnut Latte with Latte Art">
+          </div>
+          <div class="offering-content">
+            <h3>Premium Coffee</h3>
+            <p>Savor our selection of pour-overs, classic espressos, and seasonal brews crafted from the top 1% of single-origin Arabica beans.</p>
+            <a href="#booking" class="btn-aura secondary">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Offering 2: Artisan Food -->
+        <div class="offering-card reveal-item reveal-scale delay-250">
+          <div class="offering-img-wrap">
+            <img src="images/product-lineup2.jpg" alt="Fresh baked croissants and coffee cups">
+          </div>
+          <div class="offering-content">
+            <h3>Artisan Food</h3>
+            <p>Baked fresh daily in our kitchen, our menu features classic French pastries, savory Caprese, and healthy breakfast selections.</p>
+            <a href="#booking" class="btn-aura secondary">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Offering 3: Premium Ambiance -->
+        <div class="offering-card reveal-item reveal-right delay-350">
+          <div class="offering-img-wrap">
+            <img src="images/steaming-beans.jpg" alt="Fresh steaming coffee beans roasting close up">
+          </div>
+          <div class="offering-content">
+            <h3>Premium Ambiance</h3>
+            <p>Our seating is optimized for privacy, comfort, and aesthetics. Perfect for writers, business meetings, and quiet conversations.</p>
+            <a href="#booking" class="btn-aura secondary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section id="gallery" class="gallery-sec-aura">
+    <div class="container">
+      <div class="section-head reveal-item">
+        <span class="eyebrow">Visual Gallery</span>
+        <h2>EXPERIENCE AURA BREW</h2>
+        <p>A magazine-quality look inside our roasting process, specialty drinks, and design environment.</p>
+      </div>
+
+      <div class="gallery-grid-aura">
+        <div class="gallery-cell reveal-item reveal-scale delay-50">
+          <img src="images/dark-espresso.jpg" alt="Dark Espresso Shot close up">
+        </div>
+        <div class="gallery-cell reveal-item reveal-scale delay-100">
+          <img src="images/green-beans.jpg" alt="Green unroasted coffee beans on cooling beds">
+        </div>
+        <div class="gallery-cell reveal-item reveal-scale delay-150">
+          <img src="images/hazelnut-latte2.jpg" alt="Espresso latte extraction with caramel swirls">
+        </div>
+        <div class="gallery-cell reveal-item reveal-scale delay-200">
+          <img src="images/grinding.jpg" alt="Barista grinding coffee beans close up">
+        </div>
+        <div class="gallery-cell reveal-item reveal-scale delay-250">
+          <img src="images/hazelnut-moody.jpg" alt="Dark extraction of espresso shot in clear glass cup">
+        </div>
+        <div class="gallery-cell reveal-item reveal-scale delay-300">
+          <img src="images/steaming-beans.jpg" alt="Cooling freshly roasted coffee beans steaming">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="location" class="location-sec-aura">
+    <div class="container">
+      <div class="section-head reveal-item">
+        <span class="eyebrow">Visit Us</span>
+        <h2>OUR LOCATION</h2>
+      </div>
+
+      <div class="location-grid-aura">
+        <div class="location-img-wrap reveal-item reveal-left delay-100">
+          <img src="images/dark-espresso-wide.jpg" alt="Aura Brew luxury café warm interior wood paneling and lighting">
+        </div>
+
+        <div class="location-details-card reveal-item reveal-right delay-200">
+          <h3>Aura Brew Lavelle Road</h3>
+          <p>12, Park View Lane, Lavelle Road</p>
+          <p>Bengaluru, Karnataka 560001</p>
+          <p style="margin-top: 16px; font-weight: 700; color: var(--color-black);">Phone: <span style="font-weight: 400; color: var(--color-brown);">+91 80 4928 2381</span></p>
+          <p style="font-weight: 700; color: var(--color-black);">Email: <span style="font-weight: 400; color: var(--color-brown);">reserve@aurabrew.com</span></p>
+
+          <table class="hours-table">
+            <tr>
+              <td>Monday - Friday</td>
+              <td style="text-align: right; color: var(--color-brown);">07:00 AM - 10:00 PM</td>
+            </tr>
+            <tr>
+              <td>Saturday - Sunday</td>
+              <td style="text-align: right; color: var(--color-brown);">08:00 AM - 11:00 PM</td>
+            </tr>
+          </table>
+
+          <a href="https://maps.google.com" target="_blank" class="btn-aura secondary" id="btn-directions">Get Directions</a>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <section id="booking" class="booking-sec-aura" style="background-image: url('images/grinding.jpg');">
+    <div class="booking-overlay-flat"></div>
+    <div class="booking-card-wrap reveal-item reveal-scale delay-100">
+      <h2>RESERVE YOUR TABLE</h2>
+      <p>Experience Aura Brew Premium Coffee</p>
+
+      <form id="booking-form-aura" onsubmit="handleBooking(event)">
+        <div class="form-group-aura">
+          <label for="usr-name">Full Name</label>
+          <input type="text" id="usr-name" class="input-aura" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group-aura">
+          <label for="usr-email">Email Address</label>
+          <input type="email" id="usr-email" class="input-aura" placeholder="your@email.com" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group-aura">
+            <label for="usr-date">Date</label>
+            <input type="date" id="usr-date" class="input-aura" required>
+          </div>
+          <div class="form-group-aura">
+            <label for="usr-time">Time</label>
+            <input type="time" id="usr-time" class="input-aura" required>
+          </div>
+        </div>
+
+        <div class="form-group-aura">
+          <label for="usr-guests">Number of Guests</label>
+          <select id="usr-guests" class="input-aura" required style="background-color: var(--color-cream); color: var(--color-black);">
+            <option value="" disabled selected>Select headcount</option>
+            <option value="1">1 Person</option>
+            <option value="2">2 People</option>
+            <option value="3">3 People</option>
+            <option value="4">4 People</option>
+            <option value="5-8">5 to 8 People</option>
+            <option value="large">Group (8+)</option>
+          </select>
+        </div>
+
+        <div class="form-group-aura">
+          <label for="usr-notes">Special Requests</label>
+          <textarea id="usr-notes" class="input-aura" rows="2" placeholder="Table preferences, dietary alerts..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-aura primary" style="width: 100%; border: none;">BOOK NOW</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer-aura">
+    <div class="container">
+      <div class="footer-grid-aura">
+        <!-- Brand -->
+        <div class="footer-brand-aura reveal-item">
+          <h3>AURA BREW</h3>
+          <p>Artisanal coffee experience crafted with precision, premium hospitality, and luxury cafe culture in the heart of Lavelle Road.</p>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-btn-aura" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn-aura" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn-aura" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Cols -->
+        <div class="footer-col-links-aura reveal-item delay-100">
+          <h4>Navigate</h4>
+          <div class="footer-links-aura">
+            <a href="#hero">Home</a>
+            <a href="#about">Philosophy</a>
+            <a href="#menu">Offerings</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#location">Location</a>
+          </div>
+        </div>
+
+        <div class="footer-col-links-aura reveal-item delay-150">
+          <h4>Brews</h4>
+          <div class="footer-links-aura">
+            <a href="#menu">Signature Espresso</a>
+            <a href="#menu">V60 Single Origin</a>
+            <a href="#menu">South Indian Filter</a>
+            <a href="#menu">Pastries Selections</a>
+          </div>
+        </div>
+
+        <div class="footer-col-links-aura reveal-item delay-200">
+          <h4>Sanctuary</h4>
+          <div class="footer-links-aura">
+            <span>Lavelle Road, Bengaluru</span>
+            <span>+91 80 4928 2381</span>
+            <a href="mailto:info@aurabrew.com">info@aurabrew.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-aura reveal-item delay-300">
+        <span>&copy; 2026 Aura Brew. All rights reserved. Est. 2018 - Craft Coffee Since Day One.</span>
+        <div class="footer-bottom-links-aura">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ GALLERY LIGHTBOX MODAL ============ -->
+  <div id="gallery-lightbox" class="lightbox-aura" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Lightbox">&times;</button>
+    <div class="lightbox-content-wrap">
+      <img id="lightbox-img" src="" alt="Zoomed view of coffee ritual" onclick="toggleLightboxZoom(event)">
+    </div>
+  </div>
+
+  <!-- ============ RESERVATION CONFIRMED MODAL ============ -->
+  <div class="success-modal-aura" id="booking-modal-success" onclick="handleModalClose(event)">
+    <div class="success-card-aura">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <h3>Reservation Confirmed</h3>
+      <p id="success-txt">Your table has been reserved. A confirmation email has been sent.</p>
+      <button class="btn-aura primary" onclick="dismissBookingModal()" id="btn-success-dismiss" style="width: 100%; border: none;">Perfect</button>
+    </div>
+  </div>
+
+  <!-- JavaScript and Navigation scroll logic -->
+  <script>
+    // Preloader timing tracking
+    const preloaderStartTime = Date.now();
+
+    // Characters splitting for typewriter/rolling reveal
+    document.addEventListener('DOMContentLoaded', () => {
+      const logo = document.getElementById('preloader-logo');
+      if (logo) {
+        const text = logo.textContent.trim();
+        logo.innerHTML = '';
+        [...text].forEach((char, index) => {
+          const span = document.createElement('span');
+          span.className = 'char';
+          span.innerHTML = char === ' ' ? '&nbsp;' : char;
+          logo.appendChild(span);
+        });
+
+        // Trigger character animations sequentially (typewriter/rolling style)
+        setTimeout(() => {
+          const chars = logo.querySelectorAll('.char');
+          chars.forEach((char, index) => {
+            setTimeout(() => {
+              char.classList.add('animate');
+            }, index * 75);
+          });
+
+          // Trigger subtitle
+          setTimeout(() => {
+            const sub = document.getElementById('preloader-date');
+            if (sub) sub.classList.add('animate');
+          }, chars.length * 75 + 150);
+
+          // Trigger loading progress line
+          setTimeout(() => {
+            const prog = document.getElementById('preloader-progress');
+            if (prog) prog.style.width = '120px';
+          }, 200);
+        }, 100);
+      }
+
+      // Editorial Scroll Reveal Observer
+      const revealItems = document.querySelectorAll('.reveal-item');
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.05,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealItems.forEach(item => {
+          revealObserver.observe(item);
+        });
+      } else {
+        // Fallback for older browsers
+        revealItems.forEach(item => item.classList.add('revealed'));
+      }
+
+      // Gallery Click-to-Zoom Lightbox Event Listeners
+      const galleryImages = document.querySelectorAll('.gallery-cell img');
+      galleryImages.forEach(img => {
+        img.addEventListener('click', () => {
+          openLightbox(img.src, img.alt);
+        });
+      });
+    });
+
+    // Hide preloader on page load completion
+    window.addEventListener('load', () => {
+      const elapsed = Date.now() - preloaderStartTime;
+      const minLoaderTime = 2200; // minimum duration to display elegant loading sequence
+      const delay = Math.max(0, minLoaderTime - elapsed);
+
+      setTimeout(() => {
+        const preloader = document.getElementById('aura-preloader');
+        if (preloader) {
+          preloader.classList.add('fade-out');
+        }
+        document.body.classList.remove('loading');
+
+        // Immediately trigger Hero content reveal
+        setTimeout(() => {
+          const heroReveal = document.querySelectorAll('#hero .reveal-item');
+          heroReveal.forEach(item => item.classList.add('revealed'));
+        }, 400);
+      }, delay);
+    });
+
+    // Navbar styling on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('main-nav');
+      if (nav) {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+      }
+
+      // Sync active menu link on scroll
+      const sections = ['hero', 'about', 'menu', 'gallery', 'location', 'booking'];
+      let activeSection = 'hero';
+      sections.forEach(secId => {
+        const sec = document.getElementById(secId);
+        if (sec) {
+          const top = sec.offsetTop - 120;
+          if (window.scrollY >= top) {
+            activeSection = secId;
+          }
+        }
+      });
+
+      const navItems = document.querySelectorAll('.nav-item-aura');
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + activeSection) {
+          item.classList.add('active');
+        }
+      });
+    }, { passive: true });
+
+    // Handle Reservation Submission
+    function handleBooking(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('usr-name').value;
+      const date = document.getElementById('usr-date').value;
+      const time = document.getElementById('usr-time').value;
+      const selectGuests = document.getElementById('usr-guests');
+      const guests = selectGuests.options[selectGuests.selectedIndex].text;
+
+      const txtEl = document.getElementById('success-txt');
+      txtEl.textContent = `Thank you, ${name}! Your table for ${guests} has been reserved for ${date} at ${time}. We look forward to hosting your coffee ritual.`;
+
+      const modal = document.getElementById('booking-modal-success');
+      modal.classList.add('active');
+
+      document.getElementById('booking-form-aura').reset();
+    }
+
+    function handleModalClose(e) {
+      if (e.target === document.getElementById('booking-modal-success')) {
+        dismissBookingModal();
+      }
+    }
+
+    function dismissBookingModal() {
+      const modal = document.getElementById('booking-modal-success');
+      modal.classList.remove('active');
+    }
+
+    // Gallery Lightbox functions
+    function openLightbox(src, alt) {
+      const lightbox = document.getElementById('gallery-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      if (lightbox && lightboxImg) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightboxImg.classList.remove('zoomed'); // reset zoom state
+        lightbox.style.display = 'flex';
+        // Force reflow
+        lightbox.offsetHeight;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // prevent scrolling while open
+      }
+    }
+
+    function closeLightbox(e) {
+      const lightbox = document.getElementById('gallery-lightbox');
+      const closeBtn = document.querySelector('.lightbox-close');
+      if (e.target === lightbox || e.target === closeBtn || e.target.classList.contains('lightbox-close')) {
+        if (lightbox) {
+          lightbox.classList.remove('active');
+          setTimeout(() => {
+            lightbox.style.display = 'none';
+            if (!document.body.classList.contains('loading')) {
+              document.body.style.overflow = '';
+            }
+          }, 400);
+        }
+      }
+    }
+
+    function toggleLightboxZoom(e) {
+      e.stopPropagation();
+      const img = e.target;
+      img.classList.toggle('zoomed');
+    }
+
+    // Keyboard support (Escape key to close lightbox)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const lightbox = document.getElementById('gallery-lightbox');
+        if (lightbox && lightbox.classList.contains('active')) {
+          lightbox.classList.remove('active');
+          setTimeout(() => {
+            lightbox.style.display = 'none';
+            if (!document.body.classList.contains('loading')) {
+              document.body.style.overflow = '';
+            }
+          }, 400);
+        }
+      }
+    });
+
+    // Mobile nav menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('menu-toggle-btn');
+      const nav = document.getElementById('main-nav');
+
+      if (btn) {
+        btn.addEventListener('click', () => {
+          nav.classList.toggle('mobile-open');
+        });
+      }
+
+      const items = document.querySelectorAll('.nav-item-aura');
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          nav.classList.remove('mobile-open');
+        });
+      });
+    });
+  </script>
+
+
+</body>
+</html>

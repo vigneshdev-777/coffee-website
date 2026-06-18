@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal | Vignesh Chettiyar</title>
+  <meta name="description" content="Read the latest stories, brewing guides, and behind-the-bean features from Raj's Coffee.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: #FAFAFA; color: #121212; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* Nav */
+    .nav-container { background: #000; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 26px; color: #FFF; text-decoration: none; font-style: italic; }
+    .logo span { color: var(--color-caramel); }
+    .nav-links { display: flex; gap: 40px; }
+    .nav-link { color: #FFF; text-decoration: none; font-size: 14px; font-weight: 500; opacity: 0.8; transition: opacity 0.3s; text-transform: uppercase; letter-spacing: 0.05em; }
+    .nav-link:hover { opacity: 1; }
+
+    /* Article Layout */
+    .article-wrap { flex: 1; }
+
+    /* Hero */
+    .article-hero {
+      background: #121212; color: #FFF;
+      padding: 100px 60px 80px; position: relative; overflow: hidden;
+    }
+    .article-hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(to bottom, transparent, #FAFAFA);
+    }
+    .article-meta-top { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .article-category {
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.2em;
+      color: var(--color-caramel); font-weight: 600;
+      background: rgba(212, 165, 116, 0.15); padding: 6px 12px; border-radius: 999px;
+    }
+    .article-date { font-size: 13px; opacity: 0.5; }
+    .article-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(40px, 7vw, 80px);
+      line-height: 1.05; max-width: 900px;
+    }
+
+    /* Content */
+    .article-container { max-width: 780px; margin: 0 auto; padding: 80px 20px; }
+    .article-image {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      border-radius: 8px; margin-bottom: 60px; display: block;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    .article-content { font-size: 18px; line-height: 1.9; color: #333; }
+    .article-content p { margin-bottom: 28px; }
+    .article-content h2 {
+      font-family: 'Playfair Display', serif; font-size: 36px;
+      margin: 52px 0 20px; color: #121212;
+    }
+    .article-content h3 {
+      font-family: 'Playfair Display', serif; font-size: 26px;
+      margin: 40px 0 16px; color: #121212;
+    }
+    .article-content blockquote {
+      border-left: 4px solid var(--color-caramel);
+      margin: 48px 0; padding: 8px 0 8px 32px;
+      font-family: 'Playfair Display', serif; font-size: 26px;
+      font-style: italic; color: #444; line-height: 1.5;
+    }
+    .article-content ul { padding-left: 24px; margin-bottom: 28px; }
+    .article-content li { margin-bottom: 10px; }
+
+    /* Back */
+    .back-bar { border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 60px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: #555; text-decoration: none; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; font-weight: 500; }
+    .back-link:hover { color: var(--color-espresso); }
+
+    .not-found { text-align: center; padding: 120px 20px; }
+    .not-found h2 { font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 16px; }
+
+    @media (max-width: 768px) {
+      .nav-container, .article-hero, .back-bar { padding-left: 20px; padding-right: 20px; }
+      .article-hero { padding-top: 60px; padding-bottom: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav-container">
+    <a href="index.html" class="logo">Vignesh <span>Chettiyar</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="collections.html" class="nav-link">Shop</a>
+      <a href="blog.html" class="nav-link">Journal</a>
+    </div>
+  </nav>
+
+  <div class="back-bar">
+    <a href="blog.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Journal
+    </a>
+  </div>
+
+  <main class="article-wrap" id="article-wrap"></main>
+
+  <footer class="big-footer">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="collections.html">Dark Espresso Shot</a>
+        <a href="collections.html">French Vanilla</a>
+        <a href="collections.html">Hazelnut Brew</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Wholesale</a>
+        <a href="#">Subscriptions</a>
+        <a href="#">Gift Cards</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#">Support</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">YouTube</a>
+      </div>
+      <div class="footer-col">
+        <h4>Pay Safely</h4>
+        <div class="payment-icons">
+          <span>VISA</span><span>MC</span><span>UPI</span><span>AMEX</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-brand-title">VIGNESH CHETTIYAR</div>
+    <div class="footer-since">Find The Best Brew · Since 1975</div>
+  </footer>
+
+  <button class="chat-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Chat with us
+  </button>
+
+  <script>
+    const articles = {
+      'art-of-pour': {
+        title: "The Art of the Pour",
+        category: "Brewing Guide",
+        date: "October 12, 2025",
+        image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=1200&auto=format",
+        content: `
+          <p>There is a moment of stillness just before the water hits the grounds. A breath held. A ritual about to begin. The pour-over is not simply a brewing method — it is a meditation, a daily ceremony that rewards attention and patience in equal measure.</p>
+          <blockquote>"Coffee is not a drink. It is a conversation between the farmer, the roaster, and you."</blockquote>
+          <h2>Consistency is Everything</h2>
+          <p>Why does your morning cup sometimes taste divine, and other times fall flat? The answer almost always lies in consistency. The grind size, the water temperature, the pour rate — each variable compounds on the last.</p>
+          <p>Start with freshly ground coffee, 60 grams per litre of water, ground to a medium-fine consistency resembling coarse sea salt. Your water should be between 90–96°C — just off the boil.</p>
+          <h2>The Bloom</h2>
+          <p>Begin with a bloom: pour twice the weight of water to coffee grounds (if using 20g of coffee, pour 40g of water) and wait 30–45 seconds. This releases CO₂ trapped in the freshly roasted grounds and ensures even saturation.</p>
+          <h3>The Technique</h3>
+          <p>Pour in slow, concentric circles, working from the centre outward. Never let the grounds run dry until you've reached your target weight. The total brew time should land between 3–4 minutes for a balanced extraction.</p>
+          <ul>
+            <li>Use filtered water for the cleanest cup</li>
+            <li>Pre-rinse your paper filter to remove papery taste</li>
+            <li>Keep your kettle close — consistency in temperature matters</li>
+            <li>Taste, adjust, and repeat</li>
+          </ul>
+          <p>The pour-over teaches you to slow down. In a world of capsules and instant gratification, choosing to brew with intention is an act of quiet rebellion — and the results are worth every second.</p>
+        `
+      },
+      'sourcing-sustainability': {
+        title: "Sourcing with Conscience",
+        category: "Sustainability",
+        date: "September 28, 2025",
+        image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=1200&auto=format",
+        content: `
+          <p>Great coffee starts long before the roast. It begins in the soil, in the hands of the farmer, in the relationship between grower and roaster built over years of trust and shared vision.</p>
+          <blockquote>"Sustainability isn't a buzzword. It's the only way to ensure there's coffee worth drinking in fifty years."</blockquote>
+          <h2>The Supply Chain Problem</h2>
+          <p>Most commercial coffee passes through so many hands between origin and cup that the farmer who grew it receives a fraction of a cent per cup sold. We think that's wrong. Which is why we source directly — building lasting partnerships with farming communities in Karnataka, Coorg, and Araku Valley.</p>
+          <h2>What Direct Trade Means to Us</h2>
+          <p>Direct trade means visiting the farms ourselves. Understanding the harvest cycles. Paying above fair-trade prices — not because we have to, but because it's the only way to ensure quality and dignity at origin.</p>
+          <p>It means our farmers can invest in their land, their families, and their future. And it means you can taste the difference in every cup.</p>
+          <h2>Our Commitment</h2>
+          <p>We are committed to 100% traceable sourcing by 2026. Every bag of Raj's Coffee you purchase will include the farm name, altitude, process method, and harvest date — because transparency is the foundation of trust.</p>
+        `
+      },
+      'espresso-science': {
+        title: "The Perfect Espresso",
+        category: "Science of Coffee",
+        date: "September 5, 2025",
+        image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=1200&auto=format",
+        content: `
+          <p>Nine bars of pressure. Twenty-five seconds. The difference between transcendent and ordinary. Espresso is the most demanding and most rewarding of all coffee brewing methods — a high-wire act of chemistry, physics, and intuition.</p>
+          <blockquote>"An espresso is the truest test of a coffee. There is nowhere to hide."</blockquote>
+          <h2>The Variables</h2>
+          <p>Dose, yield, time, temperature, pressure — alter one, and you alter everything. A well-dialled espresso is one where all variables are in harmony. The ideal ratio for a classic espresso is 1:2 — 18g of ground coffee producing 36g of liquid in approximately 25–30 seconds.</p>
+          <h2>Extraction: Under, Over, Perfect</h2>
+          <p>Under-extracted espresso tastes sour and weak — the water passed through too quickly to draw out the full spectrum of flavours. Over-extracted espresso is bitter and harsh — the water lingered too long, pulling out the unwanted compounds.</p>
+          <p>Perfect extraction lies in the balance: a golden crema, a body that coats the tongue, and a finish that lingers — evolving from bitter chocolate to stone fruit to subtle sweetness as it cools.</p>
+          <h2>Dialling In</h2>
+          <p>When tasting a new espresso, always start by adjusting your grind. Finer = slower = more extraction. Coarser = faster = less extraction. Make one change at a time, taste, and evaluate. Patience is the most underrated skill in espresso making.</p>
+        `
+      },
+      'cold-brew-mastery': {
+        title: "Cold Brew Mastery",
+        category: "Recipes",
+        date: "August 18, 2025",
+        image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=1200&auto=format",
+        content: `
+          <p>Patience is the secret ingredient. Twelve to twenty-four hours of slow, cold steeping yields a concentrate unlike anything a hot method can produce — silky smooth, naturally sweet, with a depth and complexity that reveals itself slowly, sip by sip.</p>
+          <blockquote>"Cold brew is coffee in its most patient form. The reward is in the waiting."</blockquote>
+          <h2>The Ratio</h2>
+          <p>For a full-flavoured cold brew concentrate, use a 1:5 ratio — 100g of coarsely ground coffee to 500ml of cold, filtered water. This concentrate can be diluted 1:1 with water or milk when serving.</p>
+          <h2>The Process</h2>
+          <p>Combine coffee and cold water in a large jar or French press. Stir gently to ensure all grounds are saturated. Cover and refrigerate for a minimum of 12 hours, up to 24 for a stronger concentrate.</p>
+          <h3>Filtering</h3>
+          <p>Filter through a fine mesh strainer, then again through a paper coffee filter for a crystal-clear result. The second filter removes the fine particles that cause bitterness over time.</p>
+          <h2>Serving</h2>
+          <p>Serve over ice, diluted with equal parts cold water, or with a splash of oat milk. Add a pinch of salt to enhance sweetness. Cold brew concentrate keeps refrigerated for up to two weeks — though it rarely lasts that long.</p>
+          <ul>
+            <li>Use your darkest, boldest roast for cold brew</li>
+            <li>Grind coarser than you would for French press</li>
+            <li>Always filter twice for clarity</li>
+            <li>Never use hot water — it breaks the magic</li>
+          </ul>
+        `
+      }
+    };
+
+    const handle = new URLSearchParams(window.location.search).get('handle');
+    const wrap = document.getElementById('article-wrap');
+
+    if (handle && articles[handle]) {
+      const art = articles[handle];
+      document.title = `${art.title} | Raj's Coffee`;
+      wrap.innerHTML = `
+        <div class="article-hero">
+          <div class="article-meta-top">
+            <span class="article-category">${art.category}</span>
+            <span class="article-date">${art.date}</span>
+          </div>
+          <h1 class="article-title">${art.title}</h1>
+        </div>
+        <div class="article-container">
+          <img src="${art.image}" class="article-image" alt="${art.title}">
+          <article class="article-content">${art.content}</article>
+        </div>
+      `;
+    } else {
+      wrap.innerHTML = `
+        <div class="not-found">
+          <h2>Article not found</h2>
+          <p>The article you're looking for doesn't exist.</p>
+          <a href="blog.html" style="color:var(--color-caramel); text-decoration:underline; margin-top:16px; display:inline-block;">← Back to Journal</a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

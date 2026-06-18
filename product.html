@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | Vignesh Chettiyar</title>
+  <meta name="description" content="Explore the full details of every Vignesh Chettiyar coffee product.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    :root {
+      --color-caramel: #D4A574;
+      --color-espresso: #2C1810;
+      --color-dark: #0a0a0a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; color: #FFF; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* NAV */
+    .nav-container {
+      background: rgba(10,10,10,0.97); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 22px 60px; display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 24px; color: #FFF; text-decoration: none; font-style: italic; font-weight: 700; }
+    .logo span { color: var(--color-caramel); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-link { color: rgba(255,255,255,0.6); text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; transition: color 0.3s; }
+    .nav-link:hover { color: #FFF; }
+
+    /* BACK BAR */
+    .back-bar { padding: 18px 60px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--color-caramel); }
+
+    /* PAGE LAYOUT */
+    .product-page { flex: 1; max-width: 1220px; margin: 0 auto; padding: 72px 60px; width: 100%; }
+    .product-page__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* =========================================================
+       IMAGE GALLERY
+    ========================================================= */
+    .gallery { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 100px; }
+
+    /* Main image viewer */
+    .gallery__main {
+      position: relative; border-radius: 20px; overflow: hidden;
+      background: #111; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gallery__main img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+      padding: 32px; transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 0;
+    }
+    .gallery__main img.active { opacity: 1; transform: scale(1); }
+    .gallery__main img.leaving { opacity: 0; transform: scale(0.97); }
+
+    /* Gallery arrows */
+    .gallery__arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15); color: #FFF;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      z-index: 5; transition: all 0.25s; font-size: 18px; user-select: none;
+    }
+    .gallery__arrow:hover { background: var(--color-caramel); border-color: var(--color-caramel); color: #000; transform: translateY(-50%) scale(1.1); }
+    .gallery__arrow--prev { left: 14px; }
+    .gallery__arrow--next { right: 14px; }
+
+    /* Image counter badge */
+    .gallery__counter {
+      position: absolute; bottom: 14px; right: 14px;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+      color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 600;
+      padding: 4px 10px; border-radius: 999px; letter-spacing: 0.05em;
+    }
+
+    /* Thumbnail strip */
+    .gallery__thumbs { display: flex; gap: 12px; }
+    .gallery__thumb {
+      flex: 1; aspect-ratio: 1; border-radius: 12px; overflow: hidden;
+      cursor: pointer; border: 2px solid transparent;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      background: #111;
+    }
+    .gallery__thumb img { width: 100%; height: 100%; object-fit: contain; padding: 8px; display: block; }
+    .gallery__thumb:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(212,165,116,0.2); }
+    .gallery__thumb.active { border-color: var(--color-caramel); box-shadow: 0 0 0 1px var(--color-caramel), 0 8px 24px rgba(212,165,116,0.3); }
+
+    /* =========================================================
+       PRODUCT INFO
+    ========================================================= */
+    .product-page__info { display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }
+    .pp-brand { font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; color: var(--color-caramel); font-weight: 600; }
+    .pp-origin { font-size: 12px; color: rgba(255,255,255,0.38); text-transform: uppercase; letter-spacing: 0.15em; }
+    .pp-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4.5vw, 56px); font-weight: 700; line-height: 1.05; }
+    .pp-tagline { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: rgba(255,255,255,0.55); }
+
+    /* Price row */
+    .pp-price-row { display: flex; align-items: baseline; gap: 12px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .pp-price { font-size: 44px; font-weight: 700; color: var(--color-caramel); line-height: 1; }
+    .pp-weight { font-size: 14px; color: rgba(255,255,255,0.38); }
+
+    /* Description */
+    .pp-desc { font-size: 15px; line-height: 1.9; color: rgba(255,255,255,0.52); }
+
+    /* Flavour tags */
+    .pp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { padding: 5px 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); border-radius: 999px; font-size: 12px; color: rgba(255,255,255,0.48); letter-spacing: 0.04em; transition: all 0.2s; }
+    .tag:hover { background: rgba(212,165,116,0.1); border-color: var(--color-caramel); color: var(--color-caramel); }
+
+    /* Roast bar */
+    .roast-section { display: flex; flex-direction: column; gap: 8px; }
+    .roast-label-row { display: flex; justify-content: space-between; align-items: center; }
+    .roast-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.35); font-weight: 600; }
+    .roast-pct { font-size: 13px; color: var(--color-caramel); font-weight: 700; }
+    .roast-track { height: 5px; background: rgba(255,255,255,0.07); border-radius: 999px; overflow: hidden; }
+    .roast-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #b5832a, #e5a24c); transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
+    .roast-ends { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 4px; }
+
+    /* Stats */
+    .pp-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .stat-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 18px; text-align: center; transition: border-color 0.3s, box-shadow 0.3s; }
+    .stat-box:hover { border-color: rgba(212,165,116,0.4); box-shadow: 0 0 20px rgba(212,165,116,0.08); }
+    .stat-box__val { font-size: 24px; font-weight: 700; color: var(--color-caramel); line-height: 1; }
+    .stat-box__key { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+    /* CTA buttons */
+    .cta-group { display: flex; flex-direction: column; gap: 12px; }
+    .btn-cart {
+      width: 100%; padding: 18px; background: var(--color-caramel);
+      color: #000; border: none; font-family: 'Inter', sans-serif;
+      font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      cursor: pointer; border-radius: 10px; transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn-cart:hover { background: #FFF; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,165,116,0.3); }
+    .btn-wish {
+      width: 100%; padding: 15px; background: transparent;
+      color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.14);
+      font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer;
+      border-radius: 10px; transition: all 0.3s;
+    }
+    .btn-wish:hover { border-color: rgba(255,255,255,0.4); color: #FFF; }
+
+    /* Guarantee strip */
+    .pp-guarantee { display: flex; gap: 16px; flex-wrap: wrap; padding-top: 8px; }
+    .guarantee-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.35); }
+
+    /* =========================================================
+       RELATED PRODUCTS STRIP
+    ========================================================= */
+    .related-section { max-width: 1220px; margin: 0 auto; padding: 80px 60px; width: 100%; border-top: 1px solid rgba(255,255,255,0.06); }
+    .related-section h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 40px; color: rgba(255,255,255,0.9); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .related-card {
+      background: #111; border: 1px solid rgba(255,255,255,0.07); border-radius: 18px;
+      overflow: hidden; cursor: pointer; text-decoration: none;
+      transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+      display: flex; align-items: center; gap: 20px; padding: 20px;
+    }
+    .related-card:hover { transform: translateY(-4px); border-color: rgba(212,165,116,0.4); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+    .related-card__img { width: 90px; height: 90px; object-fit: contain; flex-shrink: 0; background: #1a1a1a; border-radius: 12px; padding: 8px; }
+    .related-card__info { display: flex; flex-direction: column; gap: 4px; }
+    .related-card__name { font-family: 'Playfair Display', serif; font-size: 18px; color: #FFF; }
+    .related-card__price { font-size: 16px; font-weight: 700; color: var(--color-caramel); }
+    .related-card__origin { font-size: 11px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* FOOTER */
+    .big-footer { background: #000; color: #FFF; padding: 60px 60px 40px; }
+    .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+    .footer-col { display: flex; flex-direction: column; }
+    .footer-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.35; margin-bottom: 16px; font-weight: 600; }
+    .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: #FFF; }
+    /* Footer brand and since styled globally in css/footer.css */
+    .chat-btn { background: #FFF; color: #000; border: none; padding: 14px 26px; border-radius: 100px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; position: fixed; bottom: 32px; right: 32px; z-index: 900; box-shadow: 0 8px 32px rgba(0,0,0,0.4); transition: all 0.3s; font-family: 'Inter', sans-serif; }
+    .chat-btn:hover { transform: translateY(-3px); }
+    .chat-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* NOT FOUND */
+    .not-found { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; text-align: center; }
+    .not-found h2 { font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 16px; }
+    .not-found p { color: rgba(255,255,255,0.4); margin-bottom: 32px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .product-page__grid { grid-template-columns: 1fr; gap: 48px; }
+      .gallery { position: static; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-container { padding: 18px 20px; }
+      .back-bar, .product-page, .related-section, .big-footer { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav-container">
+    <a href="index.html" class="logo">Vignesh <span>Chettiyar</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="collections.html" class="nav-link">Shop</a>
+      <a href="blog.html" class="nav-link">Journal</a>
+    </div>
+  </nav>
+
+  <!-- BACK -->
+  <div class="back-bar">
+    <a href="collections.html" class="back-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Shop
+    </a>
+  </div>
+
+  <!-- Product content injected by JS -->
+  <div id="product-wrap" style="flex:1;display:flex;flex-direction:column;"></div>
+
+  <!-- FOOTER -->
+  <footer class="big-footer">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="product.html?handle=dark-espresso-shot">Dark Espresso Shot</a>
+        <a href="product.html?handle=french-vanilla">French Vanilla</a>
+        <a href="product.html?handle=hazelnut-brew">Hazelnut Brew</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Wholesale</a>
+        <a href="#">Subscriptions</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#">Support</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+    <div class="footer-brand-title">VIGNESH CHETTIYAR</div>
+    <div class="footer-since">Find The Best Brew · Since 1975</div>
+  </footer>
+
+  <button class="chat-btn">
+    <div class="chat-dot"></div>
+    Chat with us
+  </button>
+
+  <script>
+    /* ── Product Database ───────────────────────────────── */
+    const products = {
+      'dark-espresso-shot': {
+        name: 'Dark Espresso Shot',
+        origin: 'Coorg, Karnataka · Single-Origin Arabica',
+        tagline: 'Bold, intense, unforgettable.',
+        price: '₹899',
+        weight: '250g · Whole Bean or Ground',
+        roast: 92,
+        roastLabel: 'Dark Roast',
+        images: [
+          { src: 'images/dark-espresso-vc.png',      label: 'Product'   },
+          { src: 'images/dark-espresso.jpg',          label: 'Close-up'  },
+          { src: 'images/dark-espresso-wide.jpg',     label: 'Lineup'    },
+          { src: 'images/dark-espresso-lineup.jpg',   label: 'Showcase'  },
+          { src: 'images/roasting-machine.jpg',        label: 'Process'   }
+        ],
+        imgBg: 'linear-gradient(145deg,#0d0806,#1a0f09)',
+        description: 'Intense, smoky and deeply satisfying. Our signature dark roast is crafted from single-origin Arabica beans sourced from the mist-covered hills of Coorg — slow-roasted at 208°C to bring out bold dark chocolate, smoky caramel, and a lingering dark cherry finish. Perfectly extracted for espresso, filter, or French press.',
+        tags: ['Dark Roast','Chocolate','Smoky','Espresso','Single-Origin','Coorg'],
+        stats: [{val:'92%',key:'Roast Level'},{val:'208°',key:'Peak Temp'},{val:'1200m',key:'Altitude'}],
+        related: ['french-vanilla','hazelnut-brew']
+      },
+      'french-vanilla': {
+        name: 'French Vanilla',
+        origin: 'Araku Valley, Andhra Pradesh · Arabica Blend',
+        tagline: 'Smooth, sweet, elegant.',
+        price: '₹999',
+        weight: '250g · Whole Bean or Ground',
+        roast: 45,
+        roastLabel: 'Light Roast',
+        images: [
+          { src: 'images/french-vanilla.jpg',       label: 'Product'  },
+          { src: 'images/french-vanilla-hero.jpg',  label: 'Showcase' },
+          { src: 'images/steaming-beans.jpg',        label: 'Process'  }
+        ],
+        imgBg: 'linear-gradient(145deg,#1a1610,#2a2218)',
+        description: 'Creamy, aromatic and silky smooth. A carefully crafted light roast blended with natural French vanilla essence, delivering warm, velvety notes with a gentle floral sweetness and a lingering caramel finish. Ideal for lattes, cappuccinos, and pour-over brewing — a cup that feels like a warm morning hug.',
+        tags: ['Light Roast','Vanilla','Floral','Creamy','Latte-Perfect','Araku'],
+        stats: [{val:'45%',key:'Roast Level'},{val:'185°',key:'Peak Temp'},{val:'900m',key:'Altitude'}],
+        related: ['dark-espresso-shot','hazelnut-brew']
+      },
+      'hazelnut-brew': {
+        name: 'Hazelnut Brew',
+        origin: 'Chikmagalur, Karnataka · Robusta-Arabica Blend',
+        tagline: 'Nutty, warm, irresistible.',
+        price: '₹999',
+        weight: '250g · Whole Bean or Ground',
+        roast: 65,
+        roastLabel: 'Medium Roast',
+        images: [
+          { src: 'images/hazelnut-clean.png',   label: 'Product'   },
+          { src: 'images/hazelnut-moody.jpg',   label: 'Lifestyle' },
+          { src: 'images/hazelnut-brew.jpg',    label: 'Close-up'  },
+          { src: 'images/hazelnut-latte2.jpg',  label: 'Serve'     },
+          { src: 'images/grinding.jpg',          label: 'Process'   }
+        ],
+        imgBg: 'linear-gradient(145deg,#160f04,#2a1e0a)',
+        description: 'Warm, nutty and irresistible. Our seasonal medium roast is blended with pure hazelnut essence, creating a rich, comforting brew with a caramel-smooth body, natural nuttiness, and a sweetness that lingers long after the last sip. Brews beautifully as drip coffee, cold brew, or a classic cappuccino.',
+        tags: ['Medium Roast','Hazelnut','Caramel','Nutty','Seasonal','Chikmagalur'],
+        stats: [{val:'65%',key:'Roast Level'},{val:'196°',key:'Peak Temp'},{val:'1050m',key:'Altitude'}],
+        related: ['dark-espresso-shot','french-vanilla']
+      }
+    };
+
+    /* ── Gallery logic ──────────────────────────────────── */
+    let galleryIndex = 0;
+    let galleryImages = [];
+
+    function setGalleryImage(index, wrap) {
+      const imgs   = wrap.querySelectorAll('.gallery__main img');
+      const thumbs = wrap.querySelectorAll('.gallery__thumb');
+      const counter = wrap.querySelector('.gallery__counter');
+
+      if (!imgs.length) return;
+      index = ((index % imgs.length) + imgs.length) % imgs.length;
+
+      imgs[galleryIndex].classList.remove('active');
+      imgs[galleryIndex].classList.add('leaving');
+      setTimeout(() => imgs[galleryIndex].classList.remove('leaving'), 400);
+
+      galleryIndex = index;
+      imgs[galleryIndex].classList.add('active');
+      thumbs.forEach((t, i) => t.classList.toggle('active', i === galleryIndex));
+      if (counter) counter.textContent = (galleryIndex + 1) + ' / ' + imgs.length;
+    }
+
+    /* ── Render product ─────────────────────────────────── */
+    const handle = new URLSearchParams(window.location.search).get('handle');
+    const wrap   = document.getElementById('product-wrap');
+    const p      = products[handle];
+
+    if (p) {
+      document.title = p.name + ' | Vignesh Chettiyar';
+      galleryImages = p.images;
+
+      /* Build gallery images HTML */
+      const imgSlots = p.images.map((img, i) =>
+        `<img src="${img.src}" alt="${img.label}" class="${i === 0 ? 'active' : ''}" loading="${i === 0 ? 'eager' : 'lazy'}">`
+      ).join('');
+
+      /* Build thumbnails */
+      const thumbSlots = p.images.map((img, i) =>
+        `<div class="gallery__thumb ${i === 0 ? 'active' : ''}" onclick="setGalleryImage(${i}, document.getElementById('product-wrap'))" title="${img.label}">
+          <img src="${img.src}" alt="${img.label}" loading="lazy">
+        </div>`
+      ).join('');
+
+      /* Build related cards */
+      const relatedHTML = (p.related || []).filter(r => products[r]).map(r => {
+        const rp = products[r];
+        return `<a class="related-card" href="product.html?handle=${r}">
+          <img class="related-card__img" src="${rp.images[0].src}" alt="${rp.name}">
+          <div class="related-card__info">
+            <div class="related-card__name">${rp.name}</div>
+            <div class="related-card__origin">${rp.roastLabel}</div>
+            <div class="related-card__price">${rp.price}</div>
+          </div>
+        </a>`;
+      }).join('');
+
+      wrap.innerHTML = `
+        <main class="product-page">
+          <div class="product-page__grid">
+
+            <!-- ── IMAGE GALLERY ── -->
+            <div class="gallery" data-reveal="left">
+
+              <!-- Main viewer -->
+              <div class="gallery__main" style="background:${p.imgBg};">
+                ${imgSlots}
+                <button class="gallery__arrow gallery__arrow--prev" onclick="setGalleryImage(galleryIndex - 1, document.getElementById('product-wrap'))" aria-label="Previous image">&#8249;</button>
+                <button class="gallery__arrow gallery__arrow--next" onclick="setGalleryImage(galleryIndex + 1, document.getElementById('product-wrap'))" aria-label="Next image">&#8250;</button>
+                <span class="gallery__counter">1 / ${p.images.length}</span>
+              </div>
+
+              <!-- Thumbnail strip -->
+              <div class="gallery__thumbs">
+                ${thumbSlots}
+              </div>
+            </div>
+
+            <!-- ── PRODUCT INFO ── -->
+            <div class="product-page__info">
+              <span class="pp-brand" data-reveal="up">Vignesh Chettiyar · Find The Best Brew Since 1975</span>
+              <span class="pp-origin" data-reveal="up" data-delay="100">${p.origin}</span>
+              <h1 class="pp-title" data-reveal="up" data-delay="200">${p.name}</h1>
+              <p class="pp-tagline" data-reveal="up" data-delay="300">${p.tagline}</p>
+
+              <div class="pp-price-row" data-reveal="up" data-delay="350">
+                <div class="pp-price">${p.price}</div>
+                <div class="pp-weight">${p.weight}</div>
+              </div>
+
+              <p class="pp-desc" data-reveal="up" data-delay="400">${p.description}</p>
+
+              <div class="pp-tags" data-reveal="up" data-delay="450">
+                ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+              </div>
+
+              <!-- Roast bar -->
+              <div class="roast-section" data-reveal="up" data-delay="500">
+                <div class="roast-label-row">
+                  <span class="roast-label">${p.roastLabel}</span>
+                  <span class="roast-pct">${p.roast}%</span>
+                </div>
+                <div class="roast-track"><div class="roast-fill" style="width:${p.roast}%"></div></div>
+                <div class="roast-ends"><span>Light</span><span>Medium</span><span>Dark</span></div>
+              </div>
+
+              <!-- Stats -->
+              <div class="pp-stats" data-reveal="up" data-delay="550">
+                ${p.stats.map(s => `
+                  <div class="stat-box">
+                    <div class="stat-box__val">${s.val}</div>
+                    <div class="stat-box__key">${s.key}</div>
+                  </div>`).join('')}
+              </div>
+
+              <!-- CTA -->
+              <div class="cta-group" data-reveal="up" data-delay="620">
+                <button class="btn-cart" onclick="alert('Cart coming soon!')">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 100 2 1 1 0 000-2zm9 0a1 1 0 100 2 1 1 0 000-2zM1 1h2.79l1.9 15h13.1l1.2-11H5.25"/></svg>
+                  Add to Cart — ${p.price}
+                </button>
+                <button class="btn-wish">♡ &nbsp; Save to Wishlist</button>
+              </div>
+
+              <!-- Guarantee -->
+              <div class="pp-guarantee" data-reveal="up" data-delay="700">
+                <span class="guarantee-item">🚀 Free shipping over ₹999</span>
+                <span class="guarantee-item">🫘 Roasted within 24h</span>
+                <span class="guarantee-item">↩️ 30-day guarantee</span>
+              </div>
+            </div>
+
+          </div>
+        </main>
+
+        <!-- ── RELATED PRODUCTS ── -->
+        ${relatedHTML ? `
+        <section class="related-section">
+          <h2 data-reveal="up">You Might Also Like</h2>
+          <div class="related-grid">
+            ${relatedHTML}
+          </div>
+        </section>` : ''}
+      `;
+
+      /* Activate scroll-reveal on injected elements */
+      if (window.IntersectionObserver) {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+      } else {
+        document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
+      }
+
+      /* Keyboard nav for gallery */
+      document.addEventListener('keydown', e => {
+        const w = document.getElementById('product-wrap');
+        if (e.key === 'ArrowLeft')  setGalleryImage(galleryIndex - 1, w);
+        if (e.key === 'ArrowRight') setGalleryImage(galleryIndex + 1, w);
+      });
+
+    } else {
+      wrap.innerHTML = `
+        <div class="not-found">
+          <h2>Product Not Found</h2>
+          <p>We couldn't find the product you're looking for.</p>
+          <a href="collections.html" style="color:var(--color-caramel);text-decoration:underline;font-size:16px;">← Browse all products</a>
+        </div>`;
+    }
+  </script>
+
+</body>
+</html>

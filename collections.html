@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All | Vignesh Chettiyar</title>
+  <meta name="description" content="Browse the full Vignesh Chettiyar collection — Dark Espresso Shot, French Vanilla & Hazelnut Brew. Premium coffee delivered to your door.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    :root {
+      --caramel: #D4A574;
+      --espresso: #2C1810;
+      --dark: #080808;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--dark); color: #FFF; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    .nav-container {
+      position: sticky; top: 0; z-index: 200;
+      padding: 22px 60px; background: rgba(8,8,8,0.97);
+      backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 24px; color: #FFF; text-decoration: none; font-style: italic; font-weight: 700; }
+    .logo span { color: var(--caramel); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-link { color: rgba(255,255,255,0.6); text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; transition: color 0.3s; }
+    .nav-link:hover, .nav-link.active { color: #FFF; }
+    .nav-cart { background: none; border: 1px solid rgba(255,255,255,0.2); color: #FFF; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
+    .nav-cart:hover { background: var(--caramel); border-color: var(--caramel); color: #000; }
+
+    /* ── SHOP HERO ───────────────────────────────────────── */
+    .shop-hero {
+      position: relative; height: 70vh; min-height: 480px; overflow: hidden;
+      display: flex; align-items: flex-end;
+    }
+    .shop-hero__bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+      transform: scale(1.05);
+      transition: transform 12s ease;
+      filter: brightness(0.55);
+    }
+    .shop-hero:hover .shop-hero__bg { transform: scale(1); }
+    .shop-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8,8,8,1) 0%,
+        rgba(8,8,8,0.6) 40%,
+        rgba(0,0,0,0.2) 100%
+      );
+    }
+
+    /* Floating particles inside hero */
+    .hero-particles-shop { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+    .hero-particles-shop .p {
+      position: absolute; border-radius: 50%;
+      background: rgba(212,165,116,0.35);
+      animation: rise-particle linear infinite;
+    }
+    @keyframes rise-particle {
+      0%   { transform: translateY(100%) translateX(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(-60px) translateX(var(--dx,0px)); opacity: 0; }
+    }
+
+    .shop-hero__content {
+      position: relative; z-index: 2;
+      padding: 0 60px 70px; width: 100%;
+      display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px;
+    }
+    .shop-hero__eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.35em; color: var(--caramel); font-weight: 600; display: block; margin-bottom: 14px; }
+    .shop-hero__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 9vw, 110px); line-height: 0.92; font-weight: 700; letter-spacing: -0.03em;
+    }
+    .shop-hero__title em { font-style: italic; color: var(--caramel); }
+    .shop-hero__sub { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 320px; line-height: 1.6; margin-top: 16px; }
+    .shop-hero__count { font-size: 13px; color: rgba(255,255,255,0.35); align-self: flex-end; padding-bottom: 4px; }
+
+    /* ── TRUST STRIP ─────────────────────────────────────── */
+    .trust-strip {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: #0d0d0d;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 22px 32px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item:hover { background: rgba(212,165,116,0.04); }
+    .trust-icon { font-size: 22px; flex-shrink: 0; }
+    .trust-text strong { display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); }
+    .trust-text span { font-size: 11px; color: rgba(255,255,255,0.35); }
+
+    /* ── FILTER TABS ─────────────────────────────────────── */
+    .filter-bar {
+      padding: 40px 60px 0;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .filter-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); margin-right: 8px; font-weight: 600; }
+    .filter-btn {
+      padding: 8px 22px; border-radius: 999px;
+      background: transparent; border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 500; cursor: pointer; letter-spacing: 0.04em;
+      transition: all 0.3s;
+    }
+    .filter-btn:hover { border-color: rgba(255,255,255,0.35); color: #FFF; }
+    .filter-btn.active {
+      background: var(--caramel); border-color: var(--caramel);
+      color: #000; font-weight: 700;
+      box-shadow: 0 0 20px rgba(212,165,116,0.3);
+    }
+
+    /* ── PRODUCT GRID ────────────────────────────────────── */
+    .shop-section { padding: 48px 60px 100px; }
+    .shop-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* ── PRODUCT CARD ────────────────────────────────────── */
+    .pcard {
+      background: #111; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px; overflow: hidden;
+      display: flex; flex-direction: column;
+      cursor: pointer; text-decoration: none; color: inherit;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.45s ease,
+                  border-color 0.45s ease;
+      position: relative;
+    }
+    .pcard:hover {
+      transform: translateY(-10px);
+      border-color: rgba(212,165,116,0.5);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(212,165,116,0.3),
+        0 0 60px rgba(212,165,116,0.07) inset;
+    }
+
+    /* Badge */
+    .pcard__badge {
+      position: absolute; top: 18px; left: 18px; z-index: 5;
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; padding: 5px 12px; border-radius: 999px;
+      background: var(--caramel); color: #000;
+      box-shadow: 0 4px 16px rgba(212,165,116,0.4);
+    }
+
+    /* Quick view button */
+    .pcard__quick {
+      position: absolute; top: 18px; right: 18px; z-index: 5;
+      background: rgba(8,8,8,0.8); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15); color: #FFF;
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: 7px 14px; border-radius: 999px;
+      cursor: pointer; transition: all 0.3s;
+      opacity: 0; transform: translateY(-6px);
+    }
+    .pcard:hover .pcard__quick { opacity: 1; transform: translateY(0); }
+    .pcard__quick:hover { background: var(--caramel); color: #000; border-color: var(--caramel); }
+
+    /* Image area */
+    .pcard__img-wrap {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pcard__img-wrap img {
+      width: 100%; height: 100%; object-fit: contain;
+      padding: 28px;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    }
+    .pcard:hover .pcard__img-wrap img { transform: scale(1.08) translateY(-6px); }
+
+    /* Shimmer layer */
+    .pcard__img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+      transform: translateX(-150%) skewX(-15deg);
+      animation: card-shimmer 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes card-shimmer {
+      0%, 70% { transform: translateX(-150%) skewX(-15deg); }
+      100%     { transform: translateX(250%) skewX(-15deg); }
+    }
+
+    /* Glow ring on hover */
+    .pcard__img-wrap::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: 24px 24px 0 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,165,116,0.15) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.5s;
+      pointer-events: none;
+    }
+    .pcard:hover .pcard__img-wrap::before { opacity: 1; }
+
+    /* Card body */
+    .pcard__body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .pcard__origin { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); }
+    .pcard__name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; line-height: 1.2; }
+    .pcard__tagline { font-size: 13px; color: rgba(255,255,255,0.45); font-style: italic; font-family: 'Playfair Display', serif; }
+    .pcard__desc { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.7; }
+
+    /* Roast bar mini */
+    .pcard__roast { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+    .pcard__roast-label { font-size: 11px; color: rgba(255,255,255,0.35); white-space: nowrap; }
+    .pcard__roast-track { flex: 1; height: 3px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+    .pcard__roast-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #b5832a, #e5a24c); }
+
+    /* Flavour tags */
+    .pcard__tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+    .pcard__tag { font-size: 10px; padding: 3px 10px; border-radius: 999px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+      color: rgba(255,255,255,0.4); transition: all 0.2s; }
+    .pcard:hover .pcard__tag { border-color: rgba(212,165,116,0.25); color: rgba(212,165,116,0.7); }
+
+    /* Card footer */
+    .pcard__footer {
+      padding: 0 24px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .pcard__price { display: flex; flex-direction: column; }
+    .pcard__price-main { font-size: 28px; font-weight: 700; color: var(--caramel); line-height: 1; }
+    .pcard__price-sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 3px; }
+    .pcard__btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 999px;
+      background: var(--caramel); border: none; color: #000;
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: pointer; text-transform: uppercase; letter-spacing: 0.06em;
+      transition: all 0.3s;
+      transform: translateY(4px); opacity: 0;
+    }
+    .pcard:hover .pcard__btn { transform: translateY(0); opacity: 1; }
+    .pcard__btn:hover { background: #FFF; transform: translateY(-2px) !important; box-shadow: 0 8px 24px rgba(212,165,116,0.4); }
+
+    /* ── FEATURED WIDE CARD ──────────────────────────────── */
+    .pcard--wide {
+      grid-column: span 3;
+      flex-direction: row; min-height: 340px;
+    }
+    .pcard--wide .pcard__img-wrap {
+      width: 40%; flex-shrink: 0; aspect-ratio: auto; min-height: 340px;
+      border-radius: 24px 0 0 24px;
+    }
+    .pcard--wide .pcard__right { display: flex; flex-direction: column; flex: 1; }
+    .pcard--wide .pcard__body { padding: 40px 40px 20px; gap: 14px; }
+    .pcard--wide .pcard__footer { padding: 0 40px 40px; }
+    .pcard--wide .pcard__name { font-size: 32px; }
+    .pcard--wide .pcard__desc { font-size: 15px; }
+    .pcard--wide .pcard__btn { opacity: 1; transform: none; }
+
+    /* ── BOTTOM BANNER ────────────────────────────────────── */
+    .shop-banner {
+      position: relative; height: 420px; overflow: hidden;
+      display: flex; align-items: center;
+      margin: 0 60px 80px; border-radius: 28px;
+    }
+    .shop-banner img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; filter: brightness(0.45);
+      transition: transform 8s ease;
+    }
+    .shop-banner:hover img { transform: scale(1.04); }
+    .shop-banner__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%); }
+    .shop-banner__content { position: relative; z-index: 2; padding: 60px; }
+    .shop-banner__eyebrow { font-size: 12px; color: var(--caramel); text-transform: uppercase; letter-spacing: 0.3em; font-weight: 600; display: block; margin-bottom: 14px; }
+    .shop-banner__title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 56px); line-height: 1.1; margin-bottom: 20px; }
+    .shop-banner__btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 30px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.4); color: #FFF;
+      text-decoration: none; font-size: 14px; font-weight: 600;
+      transition: all 0.3s; backdrop-filter: blur(4px);
+    }
+    .shop-banner__btn:hover { background: var(--caramel); border-color: var(--caramel); color: #000; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer { background: #000; color: #FFF; padding: 60px 60px 40px; }
+    .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+    .footer-col { display: flex; flex-direction: column; }
+    .footer-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.35; margin-bottom: 16px; font-weight: 600; }
+    .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: #FFF; }
+    .payment-icons { display: flex; gap: 8px; }
+    .payment-icons span { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); font-size: 10px; font-weight: 700; padding: 5px 8px; border-radius: 4px; }
+    /* Footer brand and since styled globally in css/footer.css */
+    .chat-btn { background: #FFF; color: #000; border: none; padding: 14px 26px; border-radius: 100px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; position: fixed; bottom: 32px; right: 32px; z-index: 900; box-shadow: 0 8px 32px rgba(0,0,0,0.4); transition: all 0.3s; font-family: 'Inter', sans-serif; }
+    .chat-btn:hover { transform: translateY(-3px); }
+    .chat-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pdot 2s infinite; }
+    @keyframes pdot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .shop-grid { grid-template-columns: repeat(2, 1fr); }
+      .pcard--wide { grid-column: span 2; }
+      .pcard--wide .pcard__img-wrap { width: 35%; }
+      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+      .trust-item:nth-child(2) { border-right: none; }
+    }
+    @media (max-width: 700px) {
+      .nav-container { padding: 18px 20px; }
+      .shop-hero__content { padding: 0 20px 48px; }
+      .filter-bar, .shop-section { padding-left: 20px; padding-right: 20px; }
+      .shop-grid { grid-template-columns: 1fr; }
+      .pcard--wide { grid-column: span 1; flex-direction: column; }
+      .pcard--wide .pcard__img-wrap { width: 100%; min-height: 260px; border-radius: 24px 24px 0 0; }
+      .pcard--wide .pcard__body, .pcard--wide .pcard__footer { padding: 24px; }
+      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+      .shop-banner { margin: 0 20px 60px; }
+      footer { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────── -->
+  <nav class="nav-container">
+    <a href="index.html" class="logo">Vignesh <span>Chettiyar</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="collections.html" class="nav-link active">Shop</a>
+      <a href="blog.html" class="nav-link">Journal</a>
+    </div>
+    <button class="nav-cart" aria-label="Cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 100 2 1 1 0 000-2zm9 0a1 1 0 100 2 1 1 0 000-2zM1 1h2.79l1.9 15h13.1l1.2-11H5.25"/></svg>
+    </button>
+  </nav>
+
+  <!-- ── SHOP HERO ─────────────────────────────────────── -->
+  <div class="shop-hero">
+    <img class="shop-hero__bg" src="images/dark-espresso-wide.jpg" alt="Vignesh Chettiyar Coffee Collection">
+    <div class="shop-hero__overlay"></div>
+    <div class="hero-particles-shop" id="shop-particles"></div>
+    <div class="shop-hero__content">
+      <div>
+        <span class="shop-hero__eyebrow" data-reveal="up">Vignesh Chettiyar · Est. 1975</span>
+        <h1 class="shop-hero__title" data-reveal="up" data-delay="150">
+          Every <em>Cup</em><br>Tells a Story
+        </h1>
+        <p class="shop-hero__sub" data-reveal="up" data-delay="300">Three signature roasts. Sourced from the finest estates. Delivered to your door within 24 hours of roasting.</p>
+      </div>
+      <span class="shop-hero__count" data-reveal="up" data-delay="400">3 Products Available</span>
+    </div>
+  </div>
+
+  <!-- ── TRUST STRIP ───────────────────────────────────── -->
+  <div class="trust-strip">
+    <div class="trust-item" data-reveal="up" data-delay="100">
+      <span class="trust-icon">🚀</span>
+      <div class="trust-text"><strong>Free Shipping</strong><span>Orders above ₹999</span></div>
+    </div>
+    <div class="trust-item" data-reveal="up" data-delay="200">
+      <span class="trust-icon">🫘</span>
+      <div class="trust-text"><strong>Fresh Roasted</strong><span>Within 24 hours of order</span></div>
+    </div>
+    <div class="trust-item" data-reveal="up" data-delay="300">
+      <span class="trust-icon">🌿</span>
+      <div class="trust-text"><strong>Direct Trade</strong><span>Farm to cup transparency</span></div>
+    </div>
+    <div class="trust-item" data-reveal="up" data-delay="400">
+      <span class="trust-icon">↩️</span>
+      <div class="trust-text"><strong>Easy Returns</strong><span>30-day satisfaction</span></div>
+    </div>
+  </div>
+
+  <!-- ── FILTER BAR ─────────────────────────────────────── -->
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-filter="all">All Roasts</button>
+    <button class="filter-btn" data-filter="dark">Dark Roast</button>
+    <button class="filter-btn" data-filter="light">Light Roast</button>
+    <button class="filter-btn" data-filter="medium">Medium Roast</button>
+  </div>
+
+  <!-- ── SHOP GRID ──────────────────────────────────────── -->
+  <section class="shop-section">
+    <div class="shop-grid" id="shop-grid">
+
+      <!-- ■ FEATURED — Dark Espresso Shot (Wide Card) -->
+      <a class="pcard pcard--wide" data-roast="dark" href="product.html?handle=dark-espresso-shot" data-reveal="up">
+        <div class="pcard__img-wrap" style="background:linear-gradient(145deg,#0d0806,#1a0f09);">
+          <img src="images/dark-espresso-vc.png" alt="Dark Espresso Shot">
+        </div>
+        <div class="pcard__right">
+          <span class="pcard__badge">Bestseller</span>
+          <div class="pcard__body">
+            <span class="pcard__origin">Coorg, Karnataka · Single-Origin</span>
+            <h2 class="pcard__name">Dark Espresso Shot</h2>
+            <p class="pcard__tagline">Bold, intense, unforgettable.</p>
+            <p class="pcard__desc">Intense, smoky and deeply satisfying. Slow-roasted at 208°C to bring out dark chocolate, smoky caramel, and a lingering cherry finish. The flagship of our collection.</p>
+            <div class="pcard__roast">
+              <span class="pcard__roast-label">Dark · 92%</span>
+              <div class="pcard__roast-track"><div class="pcard__roast-fill" style="width:92%"></div></div>
+            </div>
+            <div class="pcard__tags">
+              <span class="pcard__tag">Chocolate</span>
+              <span class="pcard__tag">Smoky</span>
+              <span class="pcard__tag">Espresso</span>
+              <span class="pcard__tag">Single-Origin</span>
+            </div>
+          </div>
+          <div class="pcard__footer">
+            <div class="pcard__price">
+              <span class="pcard__price-main">₹899</span>
+              <span class="pcard__price-sub">250g · Whole Bean or Ground</span>
+            </div>
+            <button class="pcard__btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 20a1 1 0 100 2 1 1 0 000-2zm9 0a1 1 0 100 2 1 1 0 000-2zM1 1h2.79l1.9 15h13.1l1.2-11H5.25"/></svg>
+              Shop Now
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- ■ French Vanilla -->
+      <a class="pcard" data-roast="light" href="product.html?handle=french-vanilla" data-reveal="scale-up" data-delay="150">
+        <span class="pcard__badge" style="background:#ede5d4;color:#5a4a2a;">Premium</span>
+        <button class="pcard__quick" onclick="event.preventDefault();window.location='product.html?handle=french-vanilla'">Quick View</button>
+        <div class="pcard__img-wrap" style="background:linear-gradient(145deg,#1a1610,#2a2218);">
+          <img src="images/french-vanilla.jpg" alt="French Vanilla">
+        </div>
+        <div class="pcard__body">
+          <span class="pcard__origin">Araku Valley, Andhra Pradesh</span>
+          <h2 class="pcard__name">French Vanilla</h2>
+          <p class="pcard__tagline">Smooth, sweet, elegant.</p>
+          <p class="pcard__desc">A carefully crafted light roast with natural French vanilla essence — warm, velvety, and endlessly creamy.</p>
+          <div class="pcard__roast">
+            <span class="pcard__roast-label">Light · 45%</span>
+            <div class="pcard__roast-track"><div class="pcard__roast-fill" style="width:45%"></div></div>
+          </div>
+          <div class="pcard__tags">
+            <span class="pcard__tag">Vanilla</span>
+            <span class="pcard__tag">Floral</span>
+            <span class="pcard__tag">Latte-Perfect</span>
+          </div>
+        </div>
+        <div class="pcard__footer">
+          <div class="pcard__price">
+            <span class="pcard__price-main">₹999</span>
+            <span class="pcard__price-sub">250g · Whole Bean or Ground</span>
+          </div>
+          <button class="pcard__btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 20a1 1 0 100 2 1 1 0 000-2zm9 0a1 1 0 100 2 1 1 0 000-2zM1 1h2.79l1.9 15h13.1l1.2-11H5.25"/></svg>
+            Shop Now
+          </button>
+        </div>
+      </a>
+
+      <!-- ■ Hazelnut Brew -->
+      <a class="pcard" data-roast="medium" href="product.html?handle=hazelnut-brew" data-reveal="scale-up" data-delay="300">
+        <span class="pcard__badge" style="background:#6b3f1f;color:#f5c97a;">Seasonal</span>
+        <button class="pcard__quick" onclick="event.preventDefault();window.location='product.html?handle=hazelnut-brew'">Quick View</button>
+        <div class="pcard__img-wrap" style="background:linear-gradient(145deg,#160f04,#2a1e0a);">
+          <img src="images/hazelnut-clean.png" alt="Hazelnut Brew">
+        </div>
+        <div class="pcard__body">
+          <span class="pcard__origin">Chikmagalur, Karnataka</span>
+          <h2 class="pcard__name">Hazelnut Brew</h2>
+          <p class="pcard__tagline">Nutty, warm, irresistible.</p>
+          <p class="pcard__desc">A seasonal medium roast with pure hazelnut essence — rich, comforting, and caramel-smooth in every sip.</p>
+          <div class="pcard__roast">
+            <span class="pcard__roast-label">Medium · 65%</span>
+            <div class="pcard__roast-track"><div class="pcard__roast-fill" style="width:65%"></div></div>
+          </div>
+          <div class="pcard__tags">
+            <span class="pcard__tag">Hazelnut</span>
+            <span class="pcard__tag">Caramel</span>
+            <span class="pcard__tag">Cold Brew</span>
+          </div>
+        </div>
+        <div class="pcard__footer">
+          <div class="pcard__price">
+            <span class="pcard__price-main">₹999</span>
+            <span class="pcard__price-sub">250g · Whole Bean or Ground</span>
+          </div>
+          <button class="pcard__btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 20a1 1 0 100 2 1 1 0 000-2zm9 0a1 1 0 100 2 1 1 0 000-2zM1 1h2.79l1.9 15h13.1l1.2-11H5.25"/></svg>
+            Shop Now
+          </button>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── BOTTOM MOODY BANNER ────────────────────────────── -->
+  <div class="shop-banner" data-reveal="scale">
+    <img src="images/hazelnut-moody.jpg" alt="Hazelnut Brew lifestyle">
+    <div class="shop-banner__overlay"></div>
+    <div class="shop-banner__content">
+      <span class="shop-banner__eyebrow" data-reveal="up">Seasonal Special</span>
+      <h2 class="shop-banner__title" data-reveal="up" data-delay="200">The Hazelnut Brew.<br>This Season's Obsession.</h2>
+      <a class="shop-banner__btn" href="product.html?handle=hazelnut-brew" data-reveal="up" data-delay="380">
+        Discover the Brew
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="big-footer">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="product.html?handle=dark-espresso-shot">Dark Espresso Shot</a>
+        <a href="product.html?handle=french-vanilla">French Vanilla</a>
+        <a href="product.html?handle=hazelnut-brew">Hazelnut Brew</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Wholesale</a>
+        <a href="#">Subscriptions</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#">Support</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+      <div class="footer-col">
+        <h4>Pay Safely</h4>
+        <div class="payment-icons"><span>VISA</span><span>MC</span><span>UPI</span><span>AMEX</span></div>
+      </div>
+    </div>
+    <div class="footer-brand-title" data-reveal="up">VIGNESH CHETTIYAR</div>
+    <div class="footer-since" data-reveal="up" data-delay="200">Find The Best Brew · Since 1975</div>
+  </footer>
+
+  <button class="chat-btn">
+    <div class="chat-dot"></div>
+    Chat with us
+  </button>
+
+  <script type="module" src="js/animations.js" defer></script>
+  <script>
+    /* ── Particles in shop hero ──────────────────────────── */
+    const pc = document.getElementById('shop-particles');
+    for (let i = 0; i < 14; i++) {
+      const d = document.createElement('div');
+      const sz = Math.random() * 5 + 3;
+      d.className = 'p';
+      d.style.cssText = `
+        left:${Math.random()*100}%; bottom:${Math.random()*30}%;
+        width:${sz}px; height:${sz}px;
+        --dx:${(Math.random()-0.5)*100}px;
+        animation-duration:${Math.random()*12+8}s;
+        animation-delay:${Math.random()*8}s;
+      `;
+      pc.appendChild(d);
+    }
+
+    /* ── Filter logic ────────────────────────────────────── */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const allCards   = document.querySelectorAll('.pcard');
+
+    function applyFilter(filter) {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+
+      allCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.roast === filter;
+
+        if (match) {
+          /* restore — clear inline styles so CSS class takes over */
+          card.style.removeProperty('opacity');
+          card.style.removeProperty('transform');
+          card.style.removeProperty('pointer-events');
+          card.style.removeProperty('filter');
+        } else {
+          /* dim — use setProperty 'important' to override any CSS rule */
+          card.style.setProperty('opacity',        '0.12',      'important');
+          card.style.setProperty('transform',      'scale(0.96)','important');
+          card.style.setProperty('pointer-events', 'none',      'important');
+          card.style.setProperty('filter',         'grayscale(40%)', 'important');
+        }
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+    });
+
+    /* ── Scroll reveal ───────────────────────────────────── */
+    document.addEventListener('DOMContentLoaded', () => {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+    });
+  </script>
+
+</body>
+</html>
